@@ -1,0 +1,5 @@
+/* jo20004-ejemplo1a.css JO20004 */
+fichero {background-color:blue;}
+ficha {background-color:red; display:block;} nombre {color:white; display:inline;} apellido {color:yellow; display:inline;}
+direccion {color:yellow;font-size:1cm; display:none;} direccion {color:green;font-size:1cm; display:none;} email {color:greenyellow;font-size:1cm; display:none;}
+website {color:rgb(255, 0, 187);font-size:1cm; display:none;}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>jo20004-ejemplo2.xml</title>
+</head>
+<body>
+  <h1>Contenido de jo20004-ejemplo2.xml</h1>
+  <div id="xml-content"></div>
+  <script>
+    fetch('jo20004-ejemplo2.xml')
+      .then(response => response.text())
+      .then(str => {
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(str, "application/xml");
+        const pais = xml.querySelector('pais');
+        if (pais) {
+          const departamento = pais.querySelector('departamento');
+          document.getElementById('xml-content').innerHTML = `
+            <ul>
+              <li><strong>País:</strong> ${pais.getAttribute('nombre')}</li>
+              <li><strong>Departamento:</strong> ${departamento.getAttribute('nombre')}</li>
+              <li><strong>Cabecera:</strong> ${departamento.querySelector('cabecera').textContent}</li>
+              <li><strong>Habitantes:</strong> ${departamento.querySelector('habitantes').textContent}</li>
+              <li><strong>Altura:</strong> ${departamento.querySelector('altura').textContent}</li>
+            </ul>
+          `;
+        } else {
+          document.getElementById('xml-content').textContent = 'No se encontró el país en el XML.';
+        }
+      })
+      .catch(err => {
+        document.getElementById('xml-content').textContent = 'Error al cargar el XML.';
+      });
+  </script>
+  <p><a href="index.html">Volver al índice</a></p>
+</body>
+</html>

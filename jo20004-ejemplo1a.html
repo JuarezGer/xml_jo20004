@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>jo20004-ejemplo1a.xml</title>
+</head>
+<body>
+  <h1>Contenido de jo20004-ejemplo1a.xml</h1>
+  <div id="xml-content"></div>
+  <script>
+    fetch('jo20004-ejemplo1a.xml')
+      .then(response => response.text())
+      .then(str => {
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(str, "application/xml");
+        const fichas = xml.querySelectorAll('ficha');
+        if (fichas.length > 0) {
+          let html = '<ul>';
+          fichas.forEach(ficha => {
+            html += '<li>';
+            html += `<strong>ID:</strong> ${ficha.getAttribute('id')}<br>`;
+            if (ficha.getAttribute('fechaingreso')) {
+              html += `<strong>Fecha de ingreso:</strong> ${ficha.getAttribute('fechaingreso')}<br>`;
+            }
+            if (ficha.getAttribute('fechacontrato')) {
+              html += `<strong>Fecha de contrato:</strong> ${ficha.getAttribute('fechacontrato')}<br>`;
+            }
+            html += `<strong>Nombre:</strong> ${ficha.querySelector('nombre').textContent}<br>`;
+            html += `<strong>Apellido:</strong> ${ficha.querySelector('apellido').textContent}<br>`;
+            html += `<strong>Dirección:</strong> ${ficha.querySelector('direccion').textContent}<br>`;
+            if (ficha.querySelector('telefono')) {
+              html += `<strong>Teléfono:</strong> ${ficha.querySelector('telefono').textContent}<br>`;
+            }
+            if (ficha.querySelector('email')) {
+              html += `<strong>Email:</strong> ${ficha.querySelector('email').textContent}<br>`;
+            }
+            if (ficha.querySelector('website')) {
+              html += `<strong>Website:</strong> ${ficha.querySelector('website').textContent}<br>`;
+            }
+            html += '</li>';
+          });
+          html += '</ul>';
+          document.getElementById('xml-content').innerHTML = html;
+        } else {
+          document.getElementById('xml-content').textContent = 'No se encontraron fichas en el XML.';
+        }
+      })
+      .catch(err => {
+        document.getElementById('xml-content').textContent = 'Error al cargar el XML.';
+      });
+  </script>
+  <p><a href="index.html">Volver al índice</a></p>
+</body>
+</html>

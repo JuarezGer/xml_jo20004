@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>jo20004-ejemplo1.xml</title>
+</head>
+<body>
+  <h1>Contenido de jo20004-ejemplo1.xml</h1>
+  <div id="xml-content"></div>
+  <script>
+    fetch('jo20004-ejemplo1.xml')
+      .then(response => response.text())
+      .then(str => {
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(str, "application/xml");
+        const ficha = xml.querySelector('ficha');
+        if (ficha) {
+          document.getElementById('xml-content').innerHTML = `
+            <ul>
+              <li><strong>Nombre:</strong> ${ficha.querySelector('nombre').textContent}</li>
+              <li><strong>Apellido:</strong> ${ficha.querySelector('apellido').textContent}</li>
+              <li><strong>Dirección:</strong> ${ficha.querySelector('direccion').textContent}</li>
+              <li><strong>Fecha de ingreso:</strong> ${ficha.getAttribute('fechaingreso')}</li>
+            </ul>
+          `;
+        } else {
+          document.getElementById('xml-content').textContent = 'No se encontró la ficha en el XML.';
+        }
+      })
+      .catch(err => {
+        document.getElementById('xml-content').textContent = 'Error al cargar el XML.';
+      });
+  </script>
+  <p><a href="index.html">Volver al índice</a></p>
+</body>
+</html>

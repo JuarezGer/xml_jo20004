@@ -1,0 +1,4 @@
+/* jo20004-ejemplo2b.css JO20004 */
+pais {background-color:rgb(0, 255, 119);}
+departamento {background-color:green; display:block;} cabecera {color:white; display:inline;} habitantes {color:rgb(34, 0, 255); display:inline;}
+altura {color:rgb(0, 191, 255);font-size:1cm; display:none;}

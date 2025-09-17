@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/css" href="jo20004-ejemplo1a.css" ?>
+<!-- ejemplo1b.xml JO20004 -->
+<fichero>
+  <ficha id="1" fechaingreso="1/11/2012">
+    <nombre>Antonio</nombre>
+    <apellido>Barbero</apellido>
+    <direccion>Calle de Los Andes, 45</direccion>
+  </ficha>
+  
+    <ficha id="2" fechacontrato="2/12/2013">
+    <nombre>Juan</nombre>
+    <apellido>Perez</apellido>
+    <direccion>Calle de Los Andes, 46</direccion>
+    <telefono>25252525</telefono>
+    <email>juanxd@hotmail.com</email>
+    <website>juanpost.com</website>
+  </ficha>
+</fichero>
